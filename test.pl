@@ -1,4 +1,4 @@
-# $Id: test.pl,v 0.2 1998/05/14 22:24:03 Madsen Exp $
+# $Id: test.pl,v 0.3 1998/10/23 02:56:26 Madsen Exp $
 #
 # Before `make install' is performed this script should be runnable with
 # `make test'. After `make install' it should work as `perl test.pl'
@@ -8,7 +8,7 @@
 # Change 1..1 below to 1..last_test_to_print .
 # (It may become useful if the test is moved to ./t subdirectory.)
 
-BEGIN { $| = 1; print "1..4\n"; }
+BEGIN { $| = 1; print "1..5\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use Text::Wrapper;
 $loaded = 1;
@@ -186,6 +186,174 @@ earth.
  | that government of the people, by the people, for the people shall
  | not perish from the earth.
 * (par_start => '>    ', body_start => ' | ')
+Fourscore
+and seven
+years ago
+our
+fathers
+brought
+forth on
+this
+continent
+a new
+nation,
+conceived
+in liberty
+and
+dedicated
+to the
+proposition
+that all
+men are
+created
+equal.
+Now we are
+engaged in
+a great
+civil war,
+testing
+whether
+that
+nation or
+any nation
+so
+conceived
+and so
+dedicated
+can long
+endure. We
+are met on
+a great
+battlefield
+of that
+war. We
+have come
+to
+dedicate a
+portion of
+that field
+as a final
+resting-
+place for
+those who
+here gave
+their
+lives that
+that
+nation
+might
+live. It
+is
+altogether
+fitting
+and proper
+that we
+should do
+this.
+But in a
+larger
+sense, we
+cannot
+dedicate,
+we cannot
+consecrate,
+we cannot
+hallow
+this
+ground.
+The brave
+men,
+living and
+dead who
+struggled
+here have
+consecrated
+it far
+above our
+poor power
+to add or
+detract.
+The world
+will
+little
+note nor
+long
+remember
+what we
+say here,
+but it can
+never
+forget
+what they
+did here.
+It is for
+us the
+living
+rather to
+be
+dedicated
+here to
+the
+unfinished
+work which
+they who
+fought
+here have
+thus far
+so nobly
+advanced.
+It is
+rather for
+us to be
+here
+dedicated
+to the
+great task
+remaining
+before
+us--that
+from these
+honored
+dead we
+take
+increased
+devotion
+to that
+cause for
+which they
+gave the
+last full
+measure of
+devotion--
+that we
+here
+highly
+resolve
+that these
+dead shall
+not have
+died in
+vain, that
+this
+nation
+under God
+shall have
+a new
+birth of
+freedom,
+and that
+government
+of the
+people, by
+the
+people,
+for the
+people
+shall not
+perish
+from the
+earth.
+* (columns => 10)
 * This line marks the end of the test cases
 
 Local Variables:
