@@ -1,0 +1,32 @@
+$$Id: README,v 0.1 1998/05/14 22:24:31 Madsen Exp $
+Text::Wrapper $%v%$
+Copyright 1998 Christopher J. Madsen
+
+DESCRIPTION
+
+    This module provides simple word wrapping.  It breaks long lines,
+    but does not alter spacing or remove existing line breaks.  If
+    you're looking for more sophisticated text formatting, try the
+    Text::Format module.
+
+    Reasons to use Text::Wrapper instead of Text::Format:
+
+    *   Text::Wrapper is significantly smaller.
+
+    *   It does not alter existing whitespace or combine short lines.
+        It only breaks long lines.  By design, Text::Format removes
+        all whitespace and then adds whitespace where it thinks
+        appropriate.
+
+    In short, Text::Wrapper is the object-oriented equivalent of
+    Text::Wrap, but with fewer bugs (I hope).
+
+LICENSE
+
+    This program is free software; you can redistribute it and/or modify
+    it under the same terms as Perl itself.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
+    GNU General Public License or the Artistic License for more details.
