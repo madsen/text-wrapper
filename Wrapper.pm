@@ -5,7 +5,7 @@ package Text::Wrapper;
 #
 # Author: Christopher J. Madsen <ac608@yfn.ysu.edu>
 # Created: 06 Mar 1998
-# Version: $Revision: 0.6 $ ($Date: 1998/03/16 02:40:05 $)
+# Version: $Revision: 0.7 $ ($Date: 1998/05/14 21:07:51 $)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -15,7 +15,7 @@ package Text::Wrapper;
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
 # GNU General Public License or the Artistic License for more details.
 #
-# Wrap text
+# Word wrap text by breaking long lines
 #---------------------------------------------------------------------
 
 require 5.000;
@@ -29,7 +29,7 @@ use vars qw($AUTOLOAD $VERSION);
 BEGIN
 {
     # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 0.6 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf('%d.%03d', '$Revision: 0.7 $ ' =~ /(\d+)\.(\d+)/);
 } # end BEGIN
 
 #=====================================================================
@@ -57,15 +57,19 @@ sub AUTOLOAD
 #---------------------------------------------------------------------
 sub new
 {
-    my ($package,%args) = @_;
-
     my $self = bless {
-        'parStart'  => delete($args{parStart})  || '',
-        'bodyStart' => delete($args{bodyStart}) || '',
-        'columns'   => delete($args{columns})   || 70,
-    }, $package;
+        'bodyStart' => '',
+        'columns'   => 70,
+        'parStart'  => '',
+    }, shift;
 
-    carp('Unknown arguments: ' . join ', ', keys %args) if keys %args;
+    croak "Missing parameter" unless (scalar @_ % 2) == 0;
+    while (@_) {
+        $AUTOLOAD = shift;
+        defined eval { &AUTOLOAD($self, shift) }
+        or croak("Unknown parameter `$AUTOLOAD'");
+    }
+
     $self;
 } # end new
 
@@ -121,7 +125,7 @@ Text::Wrapper - Simple word wrapping routine
 =head1 SYNOPSIS
 
     require Text::Wrapper;
-    $wrapper = Text::Wrapper->new(columns=>60);
+    $wrapper = Text::Wrapper->new(columns => 60, body_start => '    ');
     print $wrapper->wrap($text);
 
 =head1 DESCRIPTION
@@ -153,17 +157,38 @@ B<Text::Format>.
 
 =over 4
 
-=item $wrapper = Text::Wrapper->new([options])
+=item $wrapper = Text::Wrapper->new( [options] )
 
-Constructs a new B<Text::Wrapper> object.
+Constructs a new B<Text::Wrapper> object.  The options are specified
+by key and value.  The keys are:
+
+ body_start  The text that begins the second and following lines of
+             a paragraph.  (Default '')
+
+ columns     The number of columns to use.  This includes any text
+             in body_start or par_start.  (Default 70)
+
+ par_start   The text that begins the first line of each paragraph.
+             (Default '')
+
+=item $wrapper->body_start( [$value] )
+
+=item $wrapper->columns( [$value] )
+
+=item $wrapper->par_start( [$value] )
+
+If C<$value> is supplied, sets the option and returns the previous value.
+If omitted, just returns the current value.
 
 =item $wrapper->wrap($text)
 
-Returns a word wrapped copy of C<$text>.
+Returns a word wrapped copy of C<$text>.  The original is not altered.
 
 =head1 BUGS
 
 Does not handle tabs (they're treated just like spaces).
+
+Does not break words that can't fit on one line.
 
 =head1 AUTHOR
 
