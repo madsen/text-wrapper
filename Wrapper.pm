@@ -3,9 +3,9 @@ package Text::Wrapper;
 #
 # Copyright 1998 Christopher J. Madsen
 #
-# Author: Christopher J. Madsen <ac608@yfn.ysu.edu>
+# Author: Christopher J. Madsen <chris_madsen@geocities.com>
 # Created: 06 Mar 1998
-# Version: $Revision: 0.8 $ ($Date: 1998/10/23 02:54:12 $)
+# Version: $Revision: 1.0 $ ($Date: 1998/10/27 00:30:03 $)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -29,7 +29,7 @@ use vars qw($AUTOLOAD $VERSION);
 BEGIN
 {
     # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 0.8 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf('%d.%03d', '$Revision: 1.0 $ ' =~ /(\d+)\.(\d+)/);
 } # end BEGIN
 
 #=====================================================================
@@ -192,7 +192,7 @@ Does not break words that can't fit on one line.
 
 =head1 AUTHOR
 
-Christopher J. Madsen E<lt>F<ac608@yfn.ysu.edu>E<gt>
+Christopher J. Madsen E<lt>F<chris_madsen@geocities.com>E<gt>
 
 =cut
 
