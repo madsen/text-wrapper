@@ -5,7 +5,7 @@ package Text::Wrapper;
 #
 # Author: Christopher J. Madsen <ac608@yfn.ysu.edu>
 # Created: 06 Mar 1998
-# Version: $Revision: 0.1 $ ($Date: 1998/03/08 21:27:24 $)
+# Version: $Revision: 0.2 $ ($Date: 1998/03/09 06:36:27 $)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -21,12 +21,7 @@ package Text::Wrapper;
 require 5.000;
 use Carp;
 use strict;
-use vars qw(@ISA @EXPORT @EXPORT_OK $VERSION);
-
-require Exporter;
-@ISA = qw(Exporter);
-@EXPORT = qw();
-@EXPORT_OK = qw();
+use vars qw($VERSION);
 
 #=====================================================================
 # Package Global Variables:
@@ -34,30 +29,41 @@ require Exporter;
 BEGIN
 {
     # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 0.1 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf('%d.%03d', '$Revision: 0.2 $ ' =~ /(\d+)\.(\d+)/);
 } # end BEGIN
 
 #=====================================================================
 
 sub new
 {
-    bless { 'first' => $_[1], 'continue' => $_[2] }, $_[0];
+    my ($package,%args) = @_;
+
+    my $self = bless {
+        'parStart'  => delete($args{parStart})  || '',
+        'bodyStart' => delete($args{bodyStart}) || '',
+        'columns'   => delete($args{columns})   || 70,
+    }, $package;
+
+    carp('Unknown arguments: ' . join ', ', keys %args) if keys %args;
+    $self;
 }
 
 sub wrap
 {
     my $self = shift;
-    my $width = 74;
-    my $text = $self->{'first'};
+    my $width = $self->{'columns'};
+    my $text = $self->{'parStart'};
     my $length = length $text;
-    my $continue = "\n" . $self->{'continue'};
-    my $contLen  = length $self->{'continue'};
+    my $parStart = "\n$text";
+    my $parStartLen = $length;
+    my $continue = "\n" . $self->{'bodyStart'};
+    my $contLen  = length $self->{'bodyStart'};
     while ($_[0] =~ m/(\s*\S+)/g) {
         my $word = $1;
       again:
         if ($word =~ s/[ \t]*\n//) {
-            $text .= $continue;
-            $length = $contLen;
+            $text .= $parStart;
+            $length = $parStartLen;
             goto again;
         } elsif ($length + length $word <= $width) {
             $length += length $word;
