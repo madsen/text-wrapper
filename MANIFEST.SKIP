@@ -1,0 +1,16 @@
+\bRCS\b
+.svn\b
+~$
+\$$
+\.cmd$
+\.gz$
+^\#
+^MANIFEST\.
+^Makefile$
+^README.PL
+^(?i)TODO.txt
+^announce.txt$
+^blib/
+^cjm_
+^pm_to_blib$
+^v\d+_\d+\.out

@@ -1,0 +1,6 @@
+Changes				Revision history
+MANIFEST			See MANIFEST
+Makefile.PL			MakeMaker Makefile
+README				About the Text::Wrapper module
+Wrapper.pm			The Text::Wrapper module
+test.pl				Testing... 1, 2, 3, Testing... 1, 2, 3
