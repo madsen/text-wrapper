@@ -5,7 +5,7 @@ package Text::Wrapper;
 #
 # Author: Christopher J. Madsen <ac608@yfn.ysu.edu>
 # Created: 06 Mar 1998
-# Version: $Revision: 0.3 $ ($Date: 1998/03/11 22:23:43 $)
+# Version: $Revision: 0.4 $ ($Date: 1998/03/11 22:34:47 $)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -29,7 +29,7 @@ use vars qw($VERSION);
 BEGIN
 {
     # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 0.3 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf('%d.%03d', '$Revision: 0.4 $ ' =~ /(\d+)\.(\d+)/);
 } # end BEGIN
 
 #=====================================================================
@@ -59,25 +59,27 @@ sub wrap
     my $parStartLen = $length;
     my $continue = "\n" . $self->{'bodyStart'};
     my $contLen  = length $self->{'bodyStart'};
-    while ($_[0] =~ m/(\s*\S+)/g) {
-        my $word = $1;
-      again:
-        if ($word =~ s/[ \t]*(\n+)//) {
+    for (;;) {
+        if ($_[0] =~ m/\G[ \t]*(\n+)/gc) {
             $text .= $1 . $parStart;
             $lineStart = $length = $parStartLen;
-            goto again;
-        } elsif ($length + length $word <= $width) {
-            $length += length $word;
-            $text .= $word;
         } else {
-            $text .= $continue;
-            $lineStart = $length = $contLen;
-            $word =~ s/^\s+//;
-            goto again;
+            $_[0] =~ m/\G(\s*\S+)/g or last;
+            my $word = $1;
+          again:
+            if ($length + length $word <= $width) {
+                $length += length $word;
+                $text .= $word;
+            } else {
+                $text .= $continue;
+                $lineStart = $length = $contLen;
+                $word =~ s/^\s+//;
+                goto again;
+            }
         }
-    } # end while
+    } # end forever
     if ($length != $lineStart) { $text .= "\n" }
-    else { $text =~ s/(?:\Q$continue\E|\n\Q$parStart)\Z/\n/ }
+    else { $text =~ s/(?:\Q$continue\E|\n\Q$parStart\E)\Z/\n/ }
 
     $text;
 }
