@@ -5,7 +5,7 @@ package Text::Wrapper;
 #
 # Author: Christopher J. Madsen <ac608@yfn.ysu.edu>
 # Created: 06 Mar 1998
-# Version: $Revision: 0.5 $ ($Date: 1998/03/16 02:21:54 $)
+# Version: $Revision: 0.6 $ ($Date: 1998/03/16 02:40:05 $)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -21,7 +21,7 @@ package Text::Wrapper;
 require 5.000;
 use Carp;
 use strict;
-use vars qw($VERSION);
+use vars qw($AUTOLOAD $VERSION);
 
 #=====================================================================
 # Package Global Variables:
@@ -29,11 +29,32 @@ use vars qw($VERSION);
 BEGIN
 {
     # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 0.5 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf('%d.%03d', '$Revision: 0.6 $ ' =~ /(\d+)\.(\d+)/);
 } # end BEGIN
 
 #=====================================================================
+# Methods:
+#---------------------------------------------------------------------
+# Provide methods for getting/setting fields:
 
+sub AUTOLOAD
+{
+    my $self = $_[0];
+    my $type = ref($self) or croak("$self is not an object");
+    my $name = $AUTOLOAD;
+    $name =~ s/.*://;   # strip fully-qualified portion
+    my $field = $name;
+    $field =~ s/_([a-z])/\u$1/g; # squash underlines into mixed case
+    unless (exists $self->{$field}) {
+        # Ignore special methods like DESTROY:
+        return undef if $name =~ /^[A-Z]+$/;
+        croak("Can't locate object method \"$name\" via package \"$type\"");
+    }
+    return $self->{$field} = $_[1] if $#_;
+    $self->{$field};
+} # end AUTOLOAD
+
+#---------------------------------------------------------------------
 sub new
 {
     my ($package,%args) = @_;
@@ -48,6 +69,7 @@ sub new
     $self;
 } # end new
 
+#---------------------------------------------------------------------
 sub wrap
 {
     my $self = shift;
