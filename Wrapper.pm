@@ -5,7 +5,7 @@ package Text::Wrapper;
 #
 # Author: Christopher J. Madsen <ac608@yfn.ysu.edu>
 # Created: 06 Mar 1998
-# Version: $Revision: 0.7 $ ($Date: 1998/05/14 21:07:51 $)
+# Version: $Revision: 0.8 $ ($Date: 1998/10/23 02:54:12 $)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -18,7 +18,7 @@ package Text::Wrapper;
 # Word wrap text by breaking long lines
 #---------------------------------------------------------------------
 
-require 5.000;
+require 5.004;
 use Carp;
 use strict;
 use vars qw($AUTOLOAD $VERSION);
@@ -29,7 +29,7 @@ use vars qw($AUTOLOAD $VERSION);
 BEGIN
 {
     # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 0.7 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf('%d.%03d', '$Revision: 0.8 $ ' =~ /(\d+)\.(\d+)/);
 } # end BEGIN
 
 #=====================================================================
@@ -94,7 +94,7 @@ sub wrap
             $_[0] =~ m/\G(\s*(?:[^-\s]+-*|\S+))/g or last;
             my $word = $1;
           again:
-            if ($length + length $word <= $width) {
+            if (($length + length $word <= $width) or ($length == $lineStart)) {
                 $length += length $word;
                 $text .= $word;
             } else {
