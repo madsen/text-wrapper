@@ -1,6 +1,0 @@
-attrib -r %1
-vernum.pl -pd3 %1 Wrapper.pm README
-pushd %1
-flip -u *
-popd
-attrib +r %1

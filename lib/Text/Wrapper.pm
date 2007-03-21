@@ -3,9 +3,9 @@ package Text::Wrapper;
 #
 # Copyright 1998 Christopher J. Madsen
 #
-# Author: Christopher J. Madsen <chris_madsen@geocities.com>
+# Author: Christopher J. Madsen <perl@cjmweb.net>
 # Created: 06 Mar 1998
-# Version: $Revision: 1.0 $ ($Date: 1998/10/27 00:30:03 $)
+# $Id$
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -28,8 +28,7 @@ use vars qw($AUTOLOAD $VERSION);
 
 BEGIN
 {
-    # Convert RCS revision number to d.ddd format:
-    $VERSION = sprintf('%d.%03d', '$Revision: 1.0 $ ' =~ /(\d+)\.(\d+)/);
+    $VERSION = '1.01';
 } # end BEGIN
 
 #=====================================================================
@@ -184,15 +183,26 @@ If omitted, just returns the current value.
 
 Returns a word wrapped copy of C<$text>.  The original is not altered.
 
+=back
+
 =head1 BUGS
 
 Does not handle tabs (they're treated just like spaces).
 
 Does not break words that can't fit on one line.
 
+=head1 LICENSE
+
+Text::Wrapper is distributed under the same terms as Perl itself.
+
+This means it is distributed in the hope that it will be useful, but
+I<without any warranty>; without even the implied warranty of
+I<merchantability> or I<fitness for a particular purpose>.  See the
+GNU General Public License or the Artistic License for more details.
+
 =head1 AUTHOR
 
-Christopher J. Madsen E<lt>F<chris_madsen@geocities.com>E<gt>
+Christopher J. Madsen E<lt>F<perl AT cjmweb.net>E<gt>
 
 =cut
 

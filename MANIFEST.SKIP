@@ -14,3 +14,7 @@
 ^cjm_
 ^pm_to_blib$
 ^v\d+_\d+\.out
+^Text-Wrapper-\d
+^_build\b
+^Build$
+^Build.bat$
