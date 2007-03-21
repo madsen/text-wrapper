@@ -2,24 +2,17 @@
 #---------------------------------------------------------------------
 # $Id$
 #---------------------------------------------------------------------
-######################### We start with some black magic to print on failure.
 
-# Change 1..1 below to 1..last_test_to_print .
-# (It may become useful if the test is moved to ./t subdirectory.)
+use strict;
+use Test::More tests => 5;
 
-BEGIN { $| = 1; print "1..5\n"; }
-END {print "not ok 1\n" unless $loaded;}
-use Text::Wrapper;
-$loaded = 1;
-$generate = (@ARGV and $ARGV[0] eq 'print');
-print "ok 1\n" unless $generate;
+BEGIN {
+use_ok( 'Text::Wrapper' );
+}
 
-######################### End of black magic.
+my $generate = (@ARGV and $ARGV[0] eq 'print');
 
-# Insert your test code below (better if it prints "ok 13"
-# (correspondingly "not ok 13") depending on the success of chunk 13
-# of the test code):
-
+#=====================================================================
 sub read_data
 {
     my $text = '';
@@ -30,6 +23,7 @@ sub read_data
     die "Unexpected end of file";
 } # end read_data
 
+#=====================================================================
 # First, read the sample text, remove single line breaks, and condense
 # double line breaks into one:
 
@@ -37,8 +31,9 @@ my $text = (read_data)[1];
 $text =~ s/\n(?=\S)/ /g;
 $text =~ s/\n /\n/g;
 
+#---------------------------------------------------------------------
 # Now try each set of parameters and compare it to the expected result:
-#   (Or, if invoked as 'test.pl print', print out the actual
+#   (Or, if invoked as '10.wrapper.t print', print out the actual
 #   results and parameters in the required format.)
 
 my ($test,$args,$expect,$w,$result) = 1;
@@ -49,15 +44,15 @@ for (;;) {
     $result = $w->wrap($text);
     if ($generate) { print "$result* $args\n" }
     else {
-        print 'not ' if $result ne $expect;
-        printf "ok %d\n", ++$test;
+        is($result, $expect, $args);
     }
 } # end forever
 
+#---------------------------------------------------------------------
 # Here is the sample text followed by the test cases.  Each test case
 # is terminated by a line beginning with *, followed by the parameters
 # for that test.  The test cases are terminated by an empty case.
-# Don't forget to change the count in the BEGIN routine.
+# Don't forget to change the count in the use Test::More line.
 
 __DATA__
 Fourscore and seven years ago our fathers brought forth on this
