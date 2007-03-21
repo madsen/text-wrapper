@@ -1,4 +1,4 @@
-$$Id: README,v 0.3 1998/10/27 00:31:27 Madsen Exp $
+$$Id$
 Text::Wrapper $%v%$
 Copyright 1998 Christopher J. Madsen
 
@@ -24,6 +24,9 @@ DESCRIPTION
     Text::Wrapper requires Perl 5.004 or later.
 
 RECENT CHANGES
+
+    Version 1.01 updates my email address and modernizes the build
+    system (to Module::Build).  There are no functional changes.
 
     Version 1.000 ends the beta stage and updates my email address.
 

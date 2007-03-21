@@ -204,8 +204,8 @@ GNU General Public License or the Artistic License for more details.
 
 Christopher J. Madsen E<lt>F<perl AT cjmweb.net>E<gt>
 
-=cut
+Please send bug reports to F<bug-Text-Wrapper AT rt.cpan.org>, or
+use the web interface at
+L<http://rt.cpan.org/Public/Bug/Report.html?Queue=Text-Wrapper>
 
-# Local Variables:
-# tmtrack-file-task: "Text::Wrapper.pm"
-# End:
+=cut

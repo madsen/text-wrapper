@@ -1,5 +1,11 @@
 Revision history for Perl extension Text::Wrapper.
 
+1.01   Mar 21 2007
+	- converted to Module::Build
+        - updated my email address
+        - added example/gettysburg.pl
+        - added POD tests & fixed POD error
+
 1.000  Oct 26 1998
         - updated my email address
 
