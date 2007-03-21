@@ -1,12 +1,13 @@
 Build.PL
 Changes				Revision history
-lib/Text/Wrapper.pm             The Text::Wrapper module
+example/gettysburg.pl
+lib/Text/Wrapper.pm		The Text::Wrapper module
 Makefile.PL			MakeMaker wrapper for Module::Build
 MANIFEST			See MANIFEST
-My_Build.pm                     Customize Module::Build
+META.yml
+My_Build.pm			Customize Module::Build
 README				About the Text::Wrapper module
 t/00.load.t
-t/10.wrapper.t                  Testing... 1, 2, 3, Testing... 1, 2, 3
+t/10.wrapper.t			Testing... 1, 2, 3, Testing... 1, 2, 3
 t/pod-coverage.t
 t/pod.t
-META.yml
