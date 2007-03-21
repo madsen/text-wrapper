@@ -132,7 +132,7 @@ Text::Wrapper - Simple word wrapping routine
 B<Text::Wrapper> provides simple word wrapping.  It breaks long lines,
 but does not alter spacing or remove existing line breaks.  If you're
 looking for more sophisticated text formatting, try the
-B<Text::Format> module.
+L<Text::Format> module.
 
 Reasons to use B<Text::Wrapper> instead of B<Text::Format>:
 
