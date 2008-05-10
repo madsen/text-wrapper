@@ -1,18 +1,23 @@
 Revision history for Perl extension Text::Wrapper.
 
-1.01   Mar 21 2007
+1.02   May 10, 2008
+	- no functional changes
+	- minor clean up to documentation
+	- use Module::Build::DistVersion for packaging
+
+1.01   March 21, 2007
 	- converted to Module::Build
-        - updated my email address
-        - added example/gettysburg.pl
-        - added POD tests & fixed POD error
+	- updated my email address
+	- added example/gettysburg.pl
+	- added POD tests & fixed POD error
 
-1.000  Oct 26 1998
-        - updated my email address
+1.000  October 26, 1998
+	- updated my email address
 
-0.008  Oct 22 1998
+0.008  October 22, 1998
 	- Mention that you need Perl 5.004 or later
 	- Don't infinite loop on long words (but it still doesn't break them)
 	  (thanks to Ken Williams <ken@forum.swarthmore.edu>)
 
-0.007  May 14 1998
+0.007  May 14, 1998
 	- First public release

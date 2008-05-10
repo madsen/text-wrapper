@@ -1,5 +1,6 @@
-$$Id$
-Text::Wrapper $%v%$
+[% # $Id$ %]
+Text::Wrapper version [%version%], released [%date%]
+
 Copyright 1998 Christopher J. Madsen
 
 DESCRIPTION
@@ -25,13 +26,10 @@ DESCRIPTION
 
 RECENT CHANGES
 
-    Version 1.01 updates my email address and modernizes the build
-    system (to Module::Build).  There are no functional changes.
+    Here's what's new in version [%version%] of Text::Wrapper:
+    (See the file "Changes" for the full revision history.)
 
-    Version 1.000 ends the beta stage and updates my email address.
-
-    Version 0.008 corrects a bug that caused an infinite loop if a
-    word was too long to fit on a single line.
+[%changes%]
 
 LICENSE
 

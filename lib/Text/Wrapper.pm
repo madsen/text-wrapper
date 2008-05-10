@@ -28,7 +28,7 @@ use vars qw($AUTOLOAD $VERSION);
 
 BEGIN
 {
-    $VERSION = '1.01';
+    $VERSION = '1.02';
 } # end BEGIN
 
 #=====================================================================
@@ -121,6 +121,11 @@ __END__
 
 Text::Wrapper - Simple word wrapping routine
 
+=head1 VERSION
+
+This document describes $Id$
+
+
 =head1 SYNOPSIS
 
     require Text::Wrapper;
@@ -129,18 +134,18 @@ Text::Wrapper - Simple word wrapping routine
 
 =head1 DESCRIPTION
 
-B<Text::Wrapper> provides simple word wrapping.  It breaks long lines,
+Text::Wrapper provides simple word wrapping.  It breaks long lines,
 but does not alter spacing or remove existing line breaks.  If you're
 looking for more sophisticated text formatting, try the
 L<Text::Format> module.
 
-Reasons to use B<Text::Wrapper> instead of B<Text::Format>:
+Reasons to use Text::Wrapper instead of Text::Format:
 
 =over 4
 
 =item *
 
-B<Text::Wrapper> is significantly smaller.
+Text::Wrapper is significantly smaller.
 
 =item *
 
@@ -149,8 +154,8 @@ It only breaks long lines.
 
 =back
 
-Again, if B<Text::Wrapper> doesn't meet your needs, try
-B<Text::Format>.
+Again, if Text::Wrapper doesn't meet your needs, try
+Text::Format.
 
 =head2 Methods
 
@@ -158,7 +163,7 @@ B<Text::Format>.
 
 =item $wrapper = Text::Wrapper->new( [options] )
 
-Constructs a new B<Text::Wrapper> object.  The options are specified
+Constructs a new Text::Wrapper object.  The options are specified
 by key and value.  The keys are:
 
  body_start  The text that begins the second and following lines of
@@ -185,27 +190,63 @@ Returns a word wrapped copy of C<$text>.  The original is not altered.
 
 =back
 
-=head1 BUGS
+
+=head1 DEPENDENCIES
+
+None.
+
+
+=head1 INCOMPATIBILITIES
+
+None reported.
+
+
+=head1 BUGS AND LIMITATIONS
 
 Does not handle tabs (they're treated just like spaces).
 
 Does not break words that can't fit on one line.
 
-=head1 LICENSE
-
-Text::Wrapper is distributed under the same terms as Perl itself.
-
-This means it is distributed in the hope that it will be useful, but
-I<without any warranty>; without even the implied warranty of
-I<merchantability> or I<fitness for a particular purpose>.  See the
-GNU General Public License or the Artistic License for more details.
 
 =head1 AUTHOR
 
-Christopher J. Madsen E<lt>F<perl AT cjmweb.net>E<gt>
+Christopher J. Madsen  S<< C<< <perl AT cjmweb.net> >> >>
 
-Please send bug reports to F<bug-Text-Wrapper AT rt.cpan.org>, or
-use the web interface at
+Please report any bugs or feature requests to
+S<< C<< <bug-Text-Wrapper AT rt.cpan.org> >> >>,
+or through the web interface at
 L<http://rt.cpan.org/Public/Bug/Report.html?Queue=Text-Wrapper>
+
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 1998 Christopher J. Madsen
+
+Text::Wrapper is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+
+=head1 DISCLAIMER OF WARRANTY
+
+BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
+ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
+YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE
+LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL,
+OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.
 
 =cut
