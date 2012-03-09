@@ -53,17 +53,20 @@ sub AUTOLOAD
 #---------------------------------------------------------------------
 sub new
 {
+    croak "Missing parameter" unless (scalar @_ % 2) == 1;
+
+    my ($class, %param) = @_;
+
     my $self = bless {
         'bodyStart' => '',
         'columns'   => 70,
         'parStart'  => '',
-    }, shift;
+    }, $class;
 
-    croak "Missing parameter" unless (scalar @_ % 2) == 0;
-    while (@_) {
-        $AUTOLOAD = shift;
-        defined eval { &AUTOLOAD($self, shift) }
-        or croak("Unknown parameter `$AUTOLOAD'");
+    my $value;
+    while (($AUTOLOAD, $value) = each %param) {
+      defined eval { &AUTOLOAD($self, $value) }
+          or croak("Unknown parameter `$AUTOLOAD'");
     }
 
     $self;
