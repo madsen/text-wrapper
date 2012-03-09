@@ -1,5 +1,9 @@
 Revision history for Perl extension Text::Wrapper.
 
+1.03   NOT
+	- now built with Dist::Zilla (includes v2 META.json)
+	- repository now publicly available on GitHub
+
 1.02   May 10, 2008
 	- no functional changes
 	- minor clean up to documentation

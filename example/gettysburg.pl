@@ -1,6 +1,6 @@
 #! /usr/bin/perl
 #---------------------------------------------------------------------
-# $Id$
+# gettysburg.pl
 # Copyright 2007 Christopher J. Madsen
 #
 # Example of using the Text::Wrapper module

@@ -1,0 +1,15 @@
+/.build/
+/_build/
+/blib/
+/Build
+/Build.bat
+Makefile
+/META.*
+/MYMETA.*
+/pm_to_blib
+Text-Wrapper-*.tar.gz
+Text-Wrapper-*/
+/test-results/
+*.c
+*.obj
+*.pdb

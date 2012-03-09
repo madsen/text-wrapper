@@ -5,7 +5,6 @@ package Text::Wrapper;
 #
 # Author: Christopher J. Madsen <perl@cjmweb.net>
 # Created: 06 Mar 1998
-# $Id$
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the same terms as Perl itself.
@@ -15,7 +14,7 @@ package Text::Wrapper;
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
 # GNU General Public License or the Artistic License for more details.
 #
-# Word wrap text by breaking long lines
+# ABSTRACT: Word wrap text by breaking long lines
 #---------------------------------------------------------------------
 
 require 5.004;
@@ -26,10 +25,8 @@ use vars qw($AUTOLOAD $VERSION);
 #=====================================================================
 # Package Global Variables:
 
-BEGIN
-{
-    $VERSION = '1.02';
-} # end BEGIN
+$VERSION = '1.03';
+# This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 
 #=====================================================================
 # Methods:
@@ -117,15 +114,6 @@ sub wrap
 
 __END__
 
-=head1 NAME
-
-Text::Wrapper - Simple word wrapping routine
-
-=head1 VERSION
-
-This document describes $Id$
-
-
 =head1 SYNOPSIS
 
     require Text::Wrapper;
@@ -196,57 +184,10 @@ Returns a word wrapped copy of C<$text>.  The original is not altered.
 None.
 
 
-=head1 INCOMPATIBILITIES
-
-None reported.
-
-
 =head1 BUGS AND LIMITATIONS
 
 Does not handle tabs (they're treated just like spaces).
 
 Does not break words that can't fit on one line.
-
-
-=head1 AUTHOR
-
-Christopher J. Madsen  S<< C<< <perl AT cjmweb.net> >> >>
-
-Please report any bugs or feature requests to
-S<< C<< <bug-Text-Wrapper AT rt.cpan.org> >> >>,
-or through the web interface at
-L<http://rt.cpan.org/Public/Bug/Report.html?Queue=Text-Wrapper>
-
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 1998 Christopher J. Madsen
-
-Text::Wrapper is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-
-=head1 DISCLAIMER OF WARRANTY
-
-BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
-OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
-EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
-ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
-YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
-NECESSARY SERVICING, REPAIR, OR CORRECTION.
-
-IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE
-LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL,
-OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
-THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
-RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
-FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
-SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGES.
 
 =cut

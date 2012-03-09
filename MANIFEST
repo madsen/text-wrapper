@@ -1,13 +1,14 @@
-Build.PL
-Changes				Revision history
-example/gettysburg.pl
-lib/Text/Wrapper.pm		The Text::Wrapper module
-Makefile.PL			MakeMaker wrapper for Module::Build
-MANIFEST			See MANIFEST
+Changes
+LICENSE
+MANIFEST
+META.json
 META.yml
-README				About the Text::Wrapper module
-t/00.load.t
-t/10.wrapper.t			Testing... 1, 2, 3, Testing... 1, 2, 3
-t/pod-coverage.t
-t/pod.t
-tools/README.tt
+Makefile.PL
+README
+example/gettysburg.pl
+lib/Text/Wrapper.pm
+t/00-all_prereqs.t
+t/00-load.t
+t/10-wrapper.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t

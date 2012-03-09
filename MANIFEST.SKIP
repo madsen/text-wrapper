@@ -1,5 +1,3 @@
-\bRCS\b
-.svn\b
 ~$
 \$$
 \.cmd$
@@ -7,14 +5,18 @@
 ^\#
 ^MANIFEST\.
 ^Makefile$
-^README.PL
+^MYMETA\.
+^README\.md
+^\.
 ^(?i)TODO.txt
 ^announce.txt$
 ^blib/
-^cjm_
+\bcjm_
 ^pm_to_blib$
 ^v\d+_\d+\.out
 ^Text-Wrapper-\d
 ^_build\b
 ^Build$
-^Build.bat$
+^Build\.bat$
+^dist\.ini$
+^tools/loom\.pl

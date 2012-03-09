@@ -1,9 +1,5 @@
-[% # $Id$ %]
-Text::Wrapper version [%version%], released [%date%]
+Text::Wrapper version {{$version}}, released {{$date}}
 
-Copyright 1998 Christopher J. Madsen
-
-DESCRIPTION
 
     This module provides simple word wrapping.  It breaks long lines,
     but does not alter spacing or remove existing line breaks.  If
@@ -22,21 +18,30 @@ DESCRIPTION
     In short, Text::Wrapper is the object-oriented equivalent of
     Text::Wrap, but with fewer bugs (I hope).
 
-    Text::Wrapper requires Perl 5.004 or later.
 
-RECENT CHANGES
 
-    Here's what's new in version [%version%] of Text::Wrapper:
+INSTALLATION
+
+To install this module, run the following commands:
+
+{{ $t->build_instructions }}
+
+
+
+DEPENDENCIES
+
+{{ $t->dependency_list }}
+
+
+
+CHANGES
+    Here's what's new in version {{$version}} of Text::Wrapper:
     (See the file "Changes" for the full revision history.)
 
-[%changes%]
+{{$changes}}
 
-LICENSE
 
-    This program is free software; you can redistribute it and/or modify
-    it under the same terms as Perl itself.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See either the
-    GNU General Public License or the Artistic License for more details.
+COPYRIGHT AND LICENSE
+
+{{ local $_ = $zilla->license->notice; chomp; $_ }}
