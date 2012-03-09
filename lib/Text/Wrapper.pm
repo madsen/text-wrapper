@@ -122,6 +122,7 @@ __END__
     require Text::Wrapper;
     $wrapper = Text::Wrapper->new(columns => 60, body_start => '    ');
     print $wrapper->wrap($text);
+    $wrapper->columns(70);
 
 =head1 DESCRIPTION
 
@@ -148,38 +149,29 @@ It only breaks long lines.
 Again, if Text::Wrapper doesn't meet your needs, try
 Text::Format.
 
-=head2 Methods
 
-=over 4
+=attr body_start
 
-=item $wrapper = Text::Wrapper->new( [options] )
+The text that begins the second and following lines of
+a paragraph.  (Default '')
 
-Constructs a new Text::Wrapper object.  The options are specified
-by key and value.  The keys are:
+=attr columns
 
- body_start  The text that begins the second and following lines of
-             a paragraph.  (Default '')
+The number of columns to use.  This includes any text
+in body_start or par_start.  (Default 70)
 
- columns     The number of columns to use.  This includes any text
-             in body_start or par_start.  (Default 70)
+=attr par_start
 
- par_start   The text that begins the first line of each paragraph.
-             (Default '')
+The text that begins the first line of each paragraph.
+(Default '')
 
-=item $wrapper->body_start( [$value] )
 
-=item $wrapper->columns( [$value] )
+=method wrap
 
-=item $wrapper->par_start( [$value] )
-
-If C<$value> is supplied, sets the option and returns the previous value.
-If omitted, just returns the current value.
-
-=item $wrapper->wrap($text)
+  $wrapper->wrap($text)
 
 Returns a word wrapped copy of C<$text>.  The original is not altered.
 
-=back
 
 
 =head1 DEPENDENCIES
@@ -192,5 +184,8 @@ None.
 Does not handle tabs (they're treated just like spaces).
 
 Does not break words that can't fit on one line.
+
+=for Pod::Coverage
+new
 
 =cut
