@@ -1,6 +1,8 @@
 Revision history for Perl extension Text::Wrapper.
 
 1.03   NOT
+	- add the wrap_after attribute
+	- now requires Perl 5.10.0 or later
 	- now built with Dist::Zilla (includes v2 META.json)
 	- repository now publicly available on GitHub
 

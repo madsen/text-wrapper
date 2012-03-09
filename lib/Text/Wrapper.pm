@@ -17,7 +17,7 @@ package Text::Wrapper;
 # ABSTRACT: Word wrap text by breaking long lines
 #---------------------------------------------------------------------
 
-require 5.004;
+use 5.010;
 use Carp;
 use strict;
 use vars qw($AUTOLOAD $VERSION);
@@ -63,6 +63,10 @@ sub new
         'parStart'  => '',
     }, $class;
 
+    $self->wrap_after(
+      exists $param{wrap_after} ? delete $param{wrap_after} : '-'
+    );
+
     my $value;
     while (($AUTOLOAD, $value) = each %param) {
       defined eval { &AUTOLOAD($self, $value) }
@@ -71,6 +75,42 @@ sub new
 
     $self;
 } # end new
+
+sub wrap_after
+{
+  my $self = shift;
+
+  if (@_) {
+    $self->{_wrapRE} = $self->_build_wrap_re(
+      $self->{wrapAfter} = shift // ''
+    );
+  }
+
+  $self->{wrapAfter};
+} # end wrap_after
+
+#---------------------------------------------------------------------
+our %_wrap_re_cache;
+
+sub _build_wrap_re
+{
+  my ($self, $chars) = @_;
+
+  return $_wrap_re_cache{$chars} ||= do {
+    if (length $chars) {
+      $chars =~ s/(.)/ sprintf '\x{%X}', ord $1 /seg;
+
+      qr(
+        [ \t\r]*
+        (?: [^$chars \t\r\n]+ |
+            [$chars]+ [^$chars \t\r\n]* )
+        [$chars]*
+      )x;
+    } else {
+      qr( [ \t\r]*  [^ \t\r\n]+ )x;
+    }
+  };
+} # end _build_wrap_re
 
 #---------------------------------------------------------------------
 sub wrap
@@ -84,13 +124,15 @@ sub wrap
     my $parStartLen = $length;
     my $continue = "\n" . $self->{'bodyStart'};
     my $contLen  = length $self->{'bodyStart'};
+    my $re       = $self->{_wrapRE};
+
     pos($_[0]) = 0;             # Make sure we start at the beginning
     for (;;) {
         if ($_[0] =~ m/\G[ \t]*(\n+)/gc) {
             $text .= $1 . $parStart;
             $lineStart = $length = $parStartLen;
         } else {
-            $_[0] =~ m/\G(\s*(?:[^-\s]+-*|\S+))/g or last;
+            $_[0] =~ m/\G($re)/g or last;
             my $word = $1;
           again:
             if (($length + length $word <= $width) or ($length == $lineStart)) {
@@ -164,6 +206,12 @@ in body_start or par_start.  (Default 70)
 
 The text that begins the first line of each paragraph.
 (Default '')
+
+=attr wrap_after
+
+A line can wrap after any of the characters in this string.  Setting
+this to the empty string means a line will wrap only at whitespace.
+(Default '-')
 
 
 =method wrap
