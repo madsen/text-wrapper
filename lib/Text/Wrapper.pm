@@ -18,15 +18,17 @@ package Text::Wrapper;
 #---------------------------------------------------------------------
 
 use 5.010;
-use Carp;
 use strict;
-use vars qw($AUTOLOAD $VERSION);
+use warnings;
+
+use Carp qw(croak);
 
 #=====================================================================
 # Package Global Variables:
 
-$VERSION = '1.03';
+our $VERSION = '1.03';
 # This file is part of {{$dist}} {{$dist_version}} ({{$date}})
+our $AUTOLOAD;
 
 #=====================================================================
 # Methods:
