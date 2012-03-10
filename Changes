@@ -1,6 +1,6 @@
 Revision history for Perl extension Text::Wrapper.
 
-1.03   NOT
+1.03   March 10, 2012
 	- add the wrap_after attribute
 	- now requires Perl 5.10.0 or later
 	- explicitly supports U+2000 - U+200B as breaking spaces
