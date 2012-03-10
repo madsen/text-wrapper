@@ -3,8 +3,11 @@
 # 10-wrapper.t
 #---------------------------------------------------------------------
 
+use 5.010;
 use strict;
-use Test::More 0.88;            # done_testing
+use warnings;
+
+use Test::More;
 
 # Load Test::Differences, if available:
 BEGIN {
@@ -48,7 +51,7 @@ $text =~ s/\n /\n/g;
 
 #---------------------------------------------------------------------
 # Now try each set of parameters and compare it to the expected result:
-#   (Or, if invoked as '10.wrapper.t print', print out the actual
+#   (Or, if invoked as '10-wrapper.t print', print out the actual
 #   results and parameters in the required format.)
 
 my ($test,$args,$expect,$w,$result) = 1;
@@ -67,7 +70,7 @@ for (;;) {
 # Here is the sample text followed by the test cases.  Each test case
 # is terminated by a line beginning with *, followed by the parameters
 # for that test.  The test cases are terminated by an empty case.
-# Don't forget to change the count in the use Test::More line.
+# Don't forget to change the count in the "plan tests" line.
 
 __DATA__
 Fourscore and seven years ago our fathers brought forth on this
