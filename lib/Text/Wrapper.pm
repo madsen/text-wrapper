@@ -91,6 +91,7 @@ sub wrap_after
 
 #---------------------------------------------------------------------
 our %_wrap_re_cache;
+our $hWS = ' \t\r\x{2000}-\x{200B}';
 
 sub _build_wrap_re
 {
@@ -101,13 +102,13 @@ sub _build_wrap_re
       $chars =~ s/(.)/ sprintf '\x{%X}', ord $1 /seg;
 
       qr(
-        [ \t\r]*
-        (?: [^$chars \t\r\n]+ |
-            [$chars]+ [^$chars \t\r\n]* )
+        [$hWS]*
+        (?: [^$chars$hWS\n]+ |
+            [$chars]+ [^$chars$hWS\n]* )
         [$chars]*
       )x;
     } else {
-      qr( [ \t\r]*  [^ \t\r\n]+ )x;
+      qr( [$hWS]*  [^$hWS\n]+ )x;
     }
   };
 } # end _build_wrap_re
@@ -128,7 +129,7 @@ sub wrap
 
     pos($_[0]) = 0;             # Make sure we start at the beginning
     for (;;) {
-        if ($_[0] =~ m/\G[ \t]*(\n+)/gc) {
+        if ($_[0] =~ m/\G[$hWS]*(\n+)/ogc) {
             $text .= $1 . $parStart;
             $lineStart = $length = $parStartLen;
         } else {
@@ -141,7 +142,7 @@ sub wrap
             } else {
                 $text .= $continue;
                 $lineStart = $length = $contLen;
-                $word =~ s/^\s+//;
+                $word =~ s/^[$hWS]+//o;
                 goto again;
             }
         }
@@ -230,6 +231,9 @@ None.
 =head1 BUGS AND LIMITATIONS
 
 Does not handle tabs (they're treated just like spaces).
+
+All characters are treated as being the same width, including
+zero-width spaces and combining accents.
 
 Does not break words that can't fit on one line.
 
