@@ -1,5 +1,9 @@
 Revision history for Perl extension Text::Wrapper.
 
+1.04   NOT
+	- restore compatibility with Perl 5.8.0 (RT#77386)
+	  patch provided by Thomas Sibley
+
 1.03   March 10, 2012
 	- add the wrap_after attribute
 	- now requires Perl 5.10.0 or later
