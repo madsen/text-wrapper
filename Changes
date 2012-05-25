@@ -1,6 +1,6 @@
 Revision history for Perl extension Text::Wrapper.
 
-1.04   NOT
+1.04   May 25, 2012
 	- restore compatibility with Perl 5.8.0 (RT#77386)
 	  patch provided by Thomas Sibley
 
