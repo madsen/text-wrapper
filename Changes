@@ -1,6 +1,7 @@
 Revision history for Perl extension Text::Wrapper.
 
-1.05   NOT
+1.05   2014-01-18
+	- no functional changes
 	- additional tests showing all possible breakpoints
 
 1.04   2012-05-25
