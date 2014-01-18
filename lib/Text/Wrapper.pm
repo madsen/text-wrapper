@@ -26,7 +26,7 @@ use Carp qw(croak);
 #=====================================================================
 # Package Global Variables:
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 # This file is part of {{$dist}} {{$dist_version}} ({{$date}})
 our $AUTOLOAD;
 
